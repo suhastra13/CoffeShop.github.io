@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopi Titik Koma - Tempatmu Berhenti Sejenak, dan Berkarya Lagi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #F8F8F8;
+            --text-primary: #2C2C2C;
+            --accent-color: #D2B48C;
+            --light-gray: #EAEAEA;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #C19A6B;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--accent-color);
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-color);
+            color: var(--text-primary);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 44, 44, 0.4), rgba(44, 44, 44, 0.4)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23D2B48C" width="1200" height="800"/><circle fill="%23F8F8F8" cx="300" cy="200" r="100" opacity="0.2"/><circle fill="%23F8F8F8" cx="900" cy="400" r="150" opacity="0.1"/><rect fill="%23EAEAEA" x="100" y="300" width="200" height="100" rx="10" opacity="0.3"/><rect fill="%23EAEAEA" x="800" y="500" width="150" height="80" rx="5" opacity="0.2"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .menu-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-image {
+            height: 200px;
+            background: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--white);
+        }
+
+        .menu-content {
+            padding: 1.5rem;
+        }
+
+        .menu-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .menu-description {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            height: 200px;
+            background: var(--accent-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Location Section */
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .map-placeholder {
+            height: 400px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .location-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .location-info p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .hours {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        .hours h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: var(--white);
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+            color: #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        .back-to-home {
+            position: fixed;
+            top: 100px;
+            left: 2rem;
+            z-index: 1000;
+        }
+
+        /* Menu Page Styles */
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--accent-color);
+            background: transparent;
+            color: var(--text-primary);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn.active {
+            background: var(--accent-color);
+            color: var(--text-primary);
+        }
+
+        /* Facilities Page */
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .facility-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .facility-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">Kopi Titik Koma</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="nav-link" onclick="showPage('home')">Beranda</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('menu')">Menu</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('facilities')">Fasilitas</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('location')">Lokasi</a></li>
+                <li><a href="#" class="nav-link" onclick="showPage('contact')">Kontak</a></li>
+                <li><a href="#" class="btn-primary">Pesan Online</a></li>
+            </ul>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">☰</div>
+        </nav>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page-section active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Tempatmu Berhenti Sejenak,<br>dan Berkarya Lagi.</h1>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary" onclick="showPage('menu')">Lihat Menu</a>
+                    <a href="#" class="btn-secondary" onclick="showPage('location')">Temukan Lokasi Kami</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section">
+            <h2 class="section-title">Kenapa Memilih Kami?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">📶</div>
+                    <h3>Wi-Fi Cepat & Stabil</h3>
+                    <p>Lancar untuk meeting online dan tugas kuliahmu.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>Banyak Stopkontak</h3>
+                    <p>Bekerja seharian tanpa khawatir kehabisan daya.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☕</div>
+                    <h3>Biji Kopi Pilihan</h3>
+                    <p>Kualitas terbaik untuk menemani fokusmu.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section class="section">
+            <h2 class="section-title">Menu Favorit Minggu Ini</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-image">☕</div>
+                    <div class="menu-content">
+                        <h3>Kopi Susu Gula Aren</h3>
+                        <div class="menu-price">Rp 25.000</div>
+                        <p class="menu-description">Perpaduan sempurna kopi robusta dengan susu segar dan gula aren asli.</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-image">🥤</div>
+                    <div class="menu-content">
+                        <h3>Es Kopi Susu Vanilla</h3>
+                        <div class="menu-price">Rp 28.000</div>
+                        <p class="menu-description">Kesegaran es kopi susu dengan sentuhan vanilla yang lembut.</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-image">🍰</div>
+                    <div class="menu-content">
+                        <h3>Croissant Butter</h3>
+                        <div class="menu-price">Rp 15.000</div>
+                        <p class="menu-description">Croissant renyah dengan butter berkualitas tinggi, sempurna untuk teman kopi.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="nav-link" onclick="showPage('menu')" style="font-size: 1.1rem;">Lihat Semua Menu →</a>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section">
+            <h2 class="section-title">Sudut Nyaman Kami</h2>
+            <div class="gallery">
+                <div class="gallery-item">🏠</div>
+                <div class="gallery-item">🌿</div>
+                <div class="gallery-item">💡</div>
+                <div class="gallery-item">📚</div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section class="section">
+            <h2 class="section-title">Lokasi & Jam Buka</h2>
+            <div class="location-content">
+                <div class="map-placeholder">
+                    🗺️ Peta Google Maps Interaktif
+                </div>
+                <div class="location-info">
+                    <h3>Alamat</h3>
+                    <p>Jl. Sudirman No. 123, Ilir Barat I<br>Palembang, Sumatera Selatan 30111</p>
+                    
+                    <h3>Kontak</h3>
+                    <p>📞 (0711) 123-4567<br>📱 WhatsApp: 0812-3456-7890</p>
+                    
+                    <div class="hours">
+                        <h4>Jam Operasional</h4>
+                        <div class="hours-item">
+                            <span>Senin - Jumat</span>
+                            <span>08:00 - 22:00</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Sabtu - Minggu</span>
+                            <span>09:00 - 23:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Menu Page -->
+    <div id="menu" class="page-section">
+        <div class="section" style="padding-top: 8rem;">
+            <h2 class="section-title">Menu Lengkap</h2>
+            <div class="menu-categories">
+                <button class="category-btn active" onclick="filterMenu('semua')">Semua</button>
+                <button class="category-btn" onclick="filterMenu('kopi')">Kopi</button>
+                <button class="category-btn" onclick="filterMenu('non-kopi')">Non Kopi</button>
+                <button class="category-btn" onclick="filterMenu('makanan')">Makanan</button>
+            </div>
+            <div class="menu-grid" id="menuGrid">
+                <div class="menu-card" data-category="kopi">
+                    <div class="menu-image">☕</div>
+                    <div class="menu-content">
+                        <h3>Americano</h3>
+                        <div class="menu-price">Rp 20.000</div>
+                        <p class="menu-description">Espresso dengan air panas, rasa kopi yang kuat dan murni.</p>
+                    </div>
+                </div>
+                <div class="menu-card" data-category="kopi">
+                    <div class="menu-image">☕</div>
+                    <div class="menu-content">
+                        <h3>Cappuccino</h3>
+                        <div class="menu-price">Rp 24.000</div>
+                        <p class="menu-description">Espresso dengan steamed milk dan foam yang lembut.</p>
+                    </div>
+                </div>
+                <div class="menu-card" data-category="kopi">
+                    <div class="menu-image">☕</div>
+                    <div class="menu-content">
+                        <h3>Latte</h3>
+                        <div class="menu-price">Rp 26.000</div>
+                        <p class="menu-description">Espresso dengan susu steamed yang creamy dan latte art cantik.</p>
+                    </div>
+                </div>
+                <div class="menu-card" data-category="non-kopi">
+                    <div class="menu-image">🍫</div>
+                    <div class="menu-content">
+                        <h3>Hot Chocolate</h3>
+                        <div class="menu-price">Rp 22.000</div>
+                        <p class="menu-description">Cokelat panas premium dengan whipped cream dan marshmallow.</p>
+                    </div>
+                </div>
+                <div class="menu-card" data-category="non-kopi">
+                    <div class="menu-image">🍵</div>
+                    <div class="menu-content">
+                        <h3>Green Tea Latte</h3>
+                        <div class="menu-price">Rp 24.000</div>
+                        <p class="menu-description">Matcha premium dengan susu steamed yang creamy.</p>
+                    </div>
+                </div>
+                <div class="menu-card" data-category="makanan">
+                    <div class="menu-image">🥪</div>
+                    <div class="menu-content">
+                        <h3>Club Sandwich</h3>
+                        <div class="menu-price">Rp 35.000</div>
+                        <p class="menu-description">Sandwich berlapis dengan ayam, telur, dan sayuran segar.</p>
+                    </div>
+                </div>
+                <div class="menu-card" data-category="makanan">
+                    <div class="menu-image">🍰</div>
+                    <div class="menu-content">
+                        <h3>Cheesecake</h3>
+                        <div class="menu-price">Rp 28.000</div>
+                        <p class="menu-description">Cheesecake lembut dengan topping buah segar.</p>
+                    </div>
+                </div>
+                <div class="menu-card" data-category="makanan">
+                    <div class="menu-image">🥯</div>
+                    <div class="menu-content">
+                        <h3>Bagel Salmon</h3>
+                        <div class="menu-price">Rp 45.000</div>
+                        <p class="menu-description">Bagel panggang dengan smoked salmon dan cream cheese.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Facilities Page -->
+    <div id="facilities" class="page-section">
+        <div class="section" style="padding-top: 8rem;">
+            <h2 class="section-title">Fasilitas Lengkap</h2>
+            <div class="facility-grid">
+                <div class="facility-card">
+                    <div class="facility-icon">📶</div>
+                    <h3>Wi-Fi Gratis</h3>
+                    <p>Koneksi internet berkecepatan tinggi hingga 100 Mbps untuk semua pengunjung.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">🔌</div>
+                    <h3>Power Outlet</h3>
+                    <p>Tersedia di setiap meja untuk mendukung aktivitas kerja dan belajar Anda.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">❄️</div>
+                    <h3>AC & Kipas</h3>
+                    <p>Suasana nyaman dengan pengaturan suhu yang tepat sepanjang hari.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">🚗</div>
+                    <h3>Parkir Luas</h3>
+                    <p>Area parkir yang aman dan luas untuk mobil dan sepeda motor.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">🚽</div>
+                    <h3>Toilet Bersih</h3>
+                    <p>Fasilitas toilet yang selalu terjaga kebersihannya.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">🎵</div>
+                    <h3>Background Music</h3>
+                    <p>Musik ambient yang mendukung konsentrasi dan relaksasi.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">📺</div>
+                    <h3>TV & Proyektor</h3>
+                    <p>Tersedia untuk presentasi atau menonton bersama teman.</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">🌿</div>
+                    <h3>Outdoor Seating</h3>
+                    <p>Area outdoor yang asri dengan pemandangan taman yang menenangkan.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location Page -->
+    <div id="location" class="page-section">
+        <div class="section" style="padding-top: 8rem;">
+            <h2 class="section-title">Lokasi & Informasi</h2>
+            <div class="location-content">
+                <div class="map-placeholder">
+                    🗺️ Google Maps<br>
+                    <small>Jl. Sudirman No. 123, Palembang</small>
+                </div>
+                <div class="location-info">
+                    <h3>Alamat Lengkap</h3>
+                    <p>Jl. Sudirman No. 123, Ilir Barat I<br>Palembang, Sumatera Selatan 30111<br>Indonesia</p>
+                    
+                    <h3>Kontak Kami</h3>
+                    <p>📞 Telepon: (0711) 123-4567<br>📱 WhatsApp: 0812-3456-7890<br>📧 Email: info@kopititikkoma.com</p>
+                    
+                    <div class="hours">
+                        <h4>Jam Operasional</h4>
+                        <div class="hours-item">
+                            <span>Senin</span>
+                            <span>08:00 - 22:00</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Selasa</span>
+                            <span>08:00 - 22:00</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Rabu</span>
+                            <span>08:00 - 22:00</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Kamis</span>
+                            <span>08:00 - 22:00</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Jumat</span>
+                            <span>08:00 - 22:00</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Sabtu</span>
+                            <span>09:00 - 23:00</span>
+                        </div>
+                        <div class="hours-item">
+                            <span>Minggu</span>
+                            <span>09:00 - 23:00</span>
+                        </div>
+                    </div>
+                    
+                    <h3>Cara Menuju Lokasi</h3>
+                    <p>• Dari Bandara SMB II: 15 menit berkendara<br>
+                    • Dari Stasiun Kertapati: 20 menit berkendara<br>
+                    • Dekat dengan Mall PTC dan Palembang Square</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page-section">
+        <div class="section" style="padding-top: 8rem;">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="location-content">
+                <div class="location-info">
+                    <h3>Informasi Kontak</h3>
+                    <p style="margin-bottom: 2rem;">Kami siap melayani Anda! Jangan ragu untuk menghubungi kami melalui berbagai cara berikut:</p>
+                    
+                    <div class="facility-card" style="text-align: left; margin-bottom: 1rem;">
+                        <h4>📞 Telepon</h4>
+                        <p>(0711) 123-4567<br>Senin - Minggu: 08:00 - 23:00</p>
+                    </div>
+                    
+                    <div class="facility-card" style="text-align: left; margin-bottom: 1rem;">
+                        <h4>📱 WhatsApp</h4>
+                        <p>0812-3456-7890<br>Fast response untuk pemesanan & informasi</p>
+                        <button class="btn-primary" onclick="openWhatsApp()" style="margin-top: 1rem;">Chat WhatsApp</button>
+                    </div>
+                    
+                    <div class="facility-card" style="text-align: left; margin-bottom: 1rem;">
+                        <h4>📧 Email</h4>
+                        <p>info@kopititikkoma.com<br>Untuk kerjasama & pertanyaan umum</p>
+                    </div>
+                    
+                    <div class="facility-card" style="text-align: left;">
+                        <h4>🌐 Media Sosial</h4>
+                        <p>Follow kami untuk update menu dan promo terbaru!</p>
+                        <div class="social-icons" style="justify-content: flex-start; margin-top: 1rem;">
+                            <a href="#" class="social-icon" onclick="openSocialMedia('instagram')">📷</a>
+                            <a href="#" class="social-icon" onclick="openSocialMedia('tiktok')">🎵</a>
+                            <a href="#" class="social-icon" onclick="openSocialMedia('facebook')">📘</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Kirim Pesan</h3>
+                    <form id="contactForm" style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Nama Lengkap</label>
+                            <input type="text" id="name" required style="width: 100%; padding: 0.75rem; border: 2px solid #EAEAEA; border-radius: 5px; font-size: 1rem;">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email</label>
+                            <input type="email" id="email" required style="width: 100%; padding: 0.75rem; border: 2px solid #EAEAEA; border-radius: 5px; font-size: 1rem;">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Nomor Telepon</label>
+                            <input type="tel" id="phone" style="width: 100%; padding: 0.75rem; border: 2px solid #EAEAEA; border-radius: 5px; font-size: 1rem;">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Subjek</label>
+                            <select id="subject" style="width: 100%; padding: 0.75rem; border: 2px solid #EAEAEA; border-radius: 5px; font-size: 1rem;">
+                                <option value="">Pilih Subjek</option>
+                                <option value="reservation">Reservasi Tempat</option>
+                                <option value="catering">Catering & Event</option>
+                                <option value="complaint">Keluhan</option>
+                                <option value="suggestion">Saran</option>
+                                <option value="partnership">Kerjasama</option>
+                                <option value="other">Lainnya</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Pesan</label>
+                            <textarea id="message" required rows="5" style="width: 100%; padding: 0.75rem; border: 2px solid #EAEAEA; border-radius: 5px; font-size: 1rem; resize: vertical;"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%;">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Kopi Titik Koma</div>
+            <nav class="footer-nav">
+                <a href="#" onclick="showPage('home')">Beranda</a>
+                <a href="#" onclick="showPage('menu')">Menu</a>
+                <a href="#" onclick="showPage('facilities')">Fasilitas</a>
+                <a href="#" onclick="showPage('location')">Lokasi</a>
+                <a href="#" onclick="showPage('contact')">Kontak</a>
+            </nav>
+            <div class="social-icons">
+                <a href="#" class="social-icon" onclick="openSocialMedia('instagram')">📷</a>
+                <a href="#" class="social-icon" onclick="openSocialMedia('tiktok')">🎵</a>
+                <a href="#" class="social-icon" onclick="openSocialMedia('facebook')">📘</a>
+            </div>
+            <div class="copyright">
+                © 2025 Kopi Titik Koma. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Online Order -->
+    <div id="orderModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 2rem; border-radius: 10px; max-width: 500px; width: 90%;">
+            <h3 style="margin-bottom: 1rem;">Pesan Online</h3>
+            <p style="margin-bottom: 1.5rem;">Pilih cara pemesanan yang Anda inginkan:</p>
+            <div style="display: flex; gap: 1rem; flex-direction: column;">
+                <button class="btn-primary" onclick="orderViaWhatsApp()" style="width: 100%;">📱 Pesan via WhatsApp</button>
+                <button class="btn-secondary" onclick="orderViaPhone()" style="width: 100%;">📞 Pesan via Telepon</button>
+                <button class="btn-secondary" onclick="showPage('location')" style="width: 100%;">🏪 Datang Langsung</button>
+            </div>
+            <button onclick="closeOrderModal()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 1.5rem; cursor: pointer;">×</button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" style="display: none; position: fixed; top: 100px; right: 20px; background: var(--accent-color); color: var(--text-primary); padding: 1rem 1.5rem; border-radius: 5px; z-index: 1500; box-shadow: 0 5px 20px rgba(0,0,0,0.2);">
+        <span id="notificationText"></span>
+        <button onclick="hideNotification()" style="margin-left: 1rem; background: none; border: none; color: var(--text-primary); font-weight: bold; cursor: pointer;">×</button>
+    </div>
+
+    <script>
+        // Global state
+        let currentPage = 'home';
+        let currentMenuCategory = 'semua';
+
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                currentPage = pageId;
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+                
+                // Close mobile menu if open
+                closeMobileMenu();
+                
+                // Update URL hash without causing scroll
+                history.pushState(null, null, '#' + pageId);
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.remove('active');
+        }
+
+        // Menu Filter Function
+        function filterMenu(category) {
+            currentMenuCategory = category;
+            
+            // Update active button
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter menu items
+            const menuCards = document.querySelectorAll('.menu-card');
+            menuCards.forEach(card => {
+                if (category === 'semua' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            showNotification(`Menampilkan menu kategori: ${category === 'semua' ? 'Semua' : category}`);
+        }
+
+        // Online Order Functions
+        function openOrderModal() {
+            document.getElementById('orderModal').style.display = 'block';
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        function orderViaWhatsApp() {
+            const message = encodeURIComponent("Halo! Saya ingin memesan menu dari Kopi Titik Koma. Bisa dibantu?");
+            window.open(`https://wa.me/6281234567890?text=${message}`, '_blank');
+            closeOrderModal();
+            showNotification('Mengarahkan ke WhatsApp...');
+        }
+
+        function orderViaPhone() {
+            window.open('tel:+6271112334567');
+            closeOrderModal();
+            showNotification('Menghubungi nomor telepon...');
+        }
+
+        // Contact Functions
+        function openWhatsApp() {
+            const message = encodeURIComponent("Halo! Saya ingin bertanya tentang Kopi Titik Koma.");
+            window.open(`https://wa.me/6281234567890?text=${message}`, '_blank');
+            showNotification('Mengarahkan ke WhatsApp...');
+        }
+
+        function openSocialMedia(platform) {
+            let url = '';
+            switch(platform) {
+                case 'instagram':
+                    url = 'https://instagram.com/kopititikkoma';
+                    break;
+                case 'tiktok':
+                    url = 'https://tiktok.com/@kopititikkoma';
+                    break;
+                case 'facebook':
+                    url = 'https://facebook.com/kopititikkoma';
+                    break;
+            }
+            if (url) {
+                window.open(url, '_blank');
+                showNotification(`Membuka ${platform}...`);
+            }
+        }
+
+        // Contact Form Handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = {
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        subject: document.getElementById('subject').value,
+                        message: document.getElementById('message').value
+                    };
+                    
+                    // Simulate form submission
+                    setTimeout(() => {
+                        showNotification('Pesan berhasil dikirim! Terima kasih atas feedback Anda.');
+                        contactForm.reset();
+                    }, 1000);
+                    
+                    showNotification('Mengirim pesan...');
+                });
+            }
+        });
+
+        // Notification System
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.style.display = 'block';
+            
+            // Auto hide after 3 seconds
+            setTimeout(() => {
+                hideNotification();
+            }, 3000);
+        }
+
+        function hideNotification() {
+            document.getElementById('notification').style.display = 'none';
+        }
+
+        // Add click handlers to all "Pesan Online" buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const orderButtons = document.querySelectorAll('.btn-primary');
+            orderButtons.forEach(button => {
+                if (button.textContent.includes('Pesan Online')) {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        openOrderModal();
+                    });
+                }
+            });
+        });
+
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', function(e) {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                showPage(hash);
+            } else {
+                showPage('home');
+            }
+        });
+
+        // Initialize page based on URL hash
+        document.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                showPage(hash);
+            }
+        });
+
+        // Add smooth animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .menu-card, .feature-card, .facility-card {
+                animation: fadeIn 0.6s ease forwards;
+            }
+            
+            .page-section {
+                animation: fadeIn 0.4s ease forwards;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add click tracking for analytics (placeholder)
+        function trackClick(element, action) {
+            console.log(`User clicked: ${action} on ${element}`);
+            // Here you would typically send data to analytics service
+        }
+
+        // Add loading states for better UX
+        function showLoading(element) {
+            const originalText = element.textContent;
+            element.textContent = 'Loading...';
+            element.disabled = true;
+            
+            setTimeout(() => {
+                element.textContent = originalText;
+                element.disabled = false;
+            }, 1000);
+        }
+
+        // Make images lazy load (if real images were used)
+        function initLazyLoading() {
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+        }
+
+        // Initialize all functions when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initLazyLoading();
+            
+            // Add click handlers for smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
